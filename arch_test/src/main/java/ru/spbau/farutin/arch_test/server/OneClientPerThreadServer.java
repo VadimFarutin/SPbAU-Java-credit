@@ -61,52 +61,37 @@ public class OneClientPerThreadServer implements Server {
         }
     }
 
-    /**
-     * Class for interacting with client.
-     */
     public static class ClientHandler implements Runnable {
         private InputStream clientIn = null;
         private OutputStream clientOut = null;
 
-        /**
-         * Constructs handler for client with given streams.
-         * @param clientIn client input stream
-         * @param clientOut client output stream
-         */
         public ClientHandler(@NotNull InputStream clientIn,
                              @NotNull OutputStream clientOut) {
             this.clientIn = clientIn;
             this.clientOut = clientOut;
         }
 
-        /**
-         * Reads from and writes to client streams
-         * until client is finished or socket is closed.
-         */
         @Override
         public void run() {
             try (
                     DataInputStream in = new DataInputStream(clientIn);
                     DataOutputStream out = new DataOutputStream(clientOut)
-             ) {
+            ) {
                 long clientTime = 0;
                 long sortingTime = 0;
 
                 while (true) {
                     int bytesSize = in.readInt();
                     byte[] bytes = new byte[bytesSize];
-                    System.out.println("expected " + bytesSize + " bytes");
                     int cnt = 0;
                     while (cnt < bytesSize) {
                         cnt += in.read(bytes, cnt, bytesSize - cnt);
                     }
-                    System.out.println("read " + cnt + " bytes");
 
                     IntArrayProtos.IntArray message = IntArrayProtos.IntArray.parseFrom(bytes);
                     long clientStart = System.currentTimeMillis();
 
                     int size = message.getSize();
-                    System.out.println("size: " + size);
                     List<Integer> data = message.getDataList();
 
                     if (size == 0) {

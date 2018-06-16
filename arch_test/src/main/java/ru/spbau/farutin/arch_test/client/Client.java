@@ -10,9 +10,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Random;
 
-/**
- * Client which sends arrays to server.
- */
 public class Client implements Runnable {
     private String hostAddress;
     private int queriesNumber;
@@ -113,6 +110,7 @@ public class Client implements Runnable {
             out.writeInt(messageBytes.length);
             out.write(messageBytes);
             out.flush();
+            System.out.println("wrote " + messageBytes.length + " bytes");
 
             int statsSize = in.readInt();
             byte[] statsBytes = new byte[statsSize];

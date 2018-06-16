@@ -11,8 +11,8 @@ public class MainServer {
         if (args.length != 1) {
             System.err.println("\nUsage: gradlew runServer -Parg=<server type>\n" +
                     "0 one client per thread\n" +
-                    "1\n" +
-                    "2");
+                    "1 blocking server\n" +
+                    "2 non blocking server");
             return;
         }
 
@@ -29,6 +29,12 @@ public class MainServer {
         switch (serverType) {
             case ONE_CLIENT_PER_THREAD:
                 server = new OneClientPerThreadServer(PORT_NUMBER);
+                break;
+            case BLOCKING_SERVER:
+                server = new BlockingServer(PORT_NUMBER);
+                break;
+            case NON_BLOCKING_SERVER:
+                server = new NonBlockingServer(PORT_NUMBER);
                 break;
         }
 

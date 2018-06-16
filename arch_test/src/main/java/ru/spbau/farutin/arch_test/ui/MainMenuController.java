@@ -10,9 +10,6 @@ import ru.spbau.farutin.arch_test.util.Statistic;
 
 import java.util.ArrayList;
 
-/**
- * MainMenuController - controller for scene with main menu.
- */
 public class MainMenuController {
     @FXML
     private TextField hostAddress;
@@ -36,9 +33,6 @@ public class MainMenuController {
     @FXML
     private ComboBox<String> parameterCombo;
 
-    /**
-     * Starts testing.
-     */
     @FXML
     public void start() {
         String host = hostAddress.getCharacters().toString();
@@ -128,9 +122,6 @@ public class MainMenuController {
         statistic.save();
     }
 
-    /**
-     * Exits application.
-     */
     @FXML
     public void exit() {
         Platform.exit();
