@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<GridPane alignment="center"
+          hgap="10"
+          vgap="10"
+          xmlns="http://javafx.com/javafx/8.0.91"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="ru.spbau.farutin.arch_test.ui.MainMenuController">
+
+    <Text text="Set up parameters."
+          style="-fx-font-weight: bold"
+          GridPane.halignment="CENTER"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="0"/>
+
+    <GridPane GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="1"
+              hgap="10"
+              vgap="10">
+
+        <Text text="Host address:"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="0"/>
+
+        <TextField fx:id="hostAddress"
+                   text="127.0.0.1"
+                   GridPane.halignment="CENTER"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="0"/>
+
+        <Text text="Arch type:"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="1"/>
+
+        <ComboBox fx:id="typeCombo"
+                  promptText="choose"
+                  GridPane.halignment="CENTER"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="0" />
+                    <String fx:value="1" />
+                    <String fx:value="2" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <Text text="X (number of queries from one client):"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="2"/>
+
+        <TextField fx:id="x"
+                   GridPane.halignment="CENTER"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"/>
+
+        <Text text="Parameter to change:"
+              style="-fx-font-weight: bold"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="3"/>
+
+        <ComboBox fx:id="parameterCombo"
+                  promptText="choose"
+                  GridPane.halignment="CENTER"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="3">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="N" />
+                    <String fx:value="M" />
+                    <String fx:value="d" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <Text text="from:"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="4"/>
+
+        <TextField fx:id="from"
+                   GridPane.halignment="CENTER"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="4"/>
+
+        <Text text="to:"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="5"/>
+
+        <TextField fx:id="to"
+                   GridPane.halignment="CENTER"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="5"/>
+
+        <Text text="step:"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="6"/>
+
+        <TextField fx:id="step"
+                   GridPane.halignment="CENTER"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="6"/>
+
+        <Text text="Value of parameter that will be changed will be ignored."
+              style="-fx-font-weight: bold"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="7"/>
+
+        <Text text="N (number of elements to sort):"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="8"/>
+
+        <TextField fx:id="n"
+                   text="0"
+                   GridPane.halignment="CENTER"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="8"/>
+
+        <Text text="M (number of clients):"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="9"/>
+
+        <TextField fx:id="m"
+                   text="0"
+                   GridPane.halignment="CENTER"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="9"/>
+
+        <Text text="d (time between queries from one client):"
+              GridPane.halignment="CENTER"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="10"/>
+
+        <TextField fx:id="d"
+                   text="1000"
+                   GridPane.halignment="CENTER"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="10"/>
+
+    </GridPane>
+
+    <Button text="Start"
+            GridPane.halignment="CENTER"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="2"
+            onAction="#start"/>
+
+    <Button text="Exit"
+            GridPane.halignment="CENTER"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="3"
+            onAction="#exit"/>
+</GridPane>

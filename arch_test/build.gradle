@@ -1,0 +1,27 @@
+group 'ru.spbau.farutin'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.jetbrains', name: 'annotations', version: '13.0'
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.5.1'
+    compile group: 'org.controlsfx', name: 'controlsfx', version: '8.40.14'
+}
+
+task runServer(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = "ru.spbau.farutin.arch_test.server.MainServer"
+    standardInput = System.in
+
+    if (project.hasProperty('arg')) {
+        args = [project.property('arg')]
+    }
+}
