@@ -1,0 +1,10 @@
+BLOCKING_SERVER
+X: 5
+N: 10000
+M: 1
+d: 100
+M changes:
+step: 1 from: 1 to: 10
+1 2 3 4 5 6 7 8 9 10 
+query on server: 
+318.0 296.0 343.0 396.0 400.0 408.0 417.0 407.0 414.0 410.0 

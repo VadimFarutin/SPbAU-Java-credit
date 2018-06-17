@@ -1,0 +1,10 @@
+BLOCKING_SERVER
+X: 5
+N: 10000
+M: 1
+d: 100
+M changes:
+step: 1 from: 1 to: 10
+1 2 3 4 5 6 7 8 9 10 
+client on server: 
+343.0 304.0 354.0 407.0 445.0 501.0 596.0 661.0 750.0 844.0 

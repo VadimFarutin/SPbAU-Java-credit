@@ -52,80 +52,90 @@ public class Statistic {
 
     public void save() {
         try {
-            StringBuilder builder = new StringBuilder();
-            builder.append("./");
-            builder.append(serverType.toString());
-            builder.append('_');
-            builder.append(incN);
-            builder.append('_');
-            builder.append(incM);
-            builder.append('_');
-            builder.append(incD);
-            builder.append(".txt");
+            String path = "./data/" +
+                    serverType.toString() +
+                    '_' +
+                    incN +
+                    '_' +
+                    incM +
+                    '_' +
+                    incD +
+                    "_";
 
-            File file = new File(builder.toString());
+            String clientServer = "client_server.txt";
+            String queryServer = "query_server.txt";
+            String clientLocal = "client_local.txt";
 
-            if (!file.exists()) {
-                if (!file.createNewFile()) {
-                    throw new IOException();
-                }
-            }
-
+            File file = new File(path + clientServer);
+            checkFile(file);
             PrintWriter out = new PrintWriter(file);
-
-            out.println(serverType.toString());
-            out.println("X: " + x);
-            out.println("N: " + n);
-            out.println("M: " + m);
-            out.println("d: " + d);
-
-            if (incN != 0) {
-                out.println("N changes:");
-                out.print("step: " + incN);
-            } else if (incM != 0) {
-                out.println("M changes:");
-                out.print("step: " + incM);
-            } else {
-                out.println("delta changes:");
-                out.print("step: " + incD);
-            }
-
-            out.println(" from: " + from + " to: " + to);
-
-            for (int cur = from; cur <= to; cur += step) {
-                out.print(cur);
-                out.print(' ');
-            }
-
-            out.println();
+            printHeader(out);
             out.println("client on server: ");
-
             for (Double t : clientTimeServerValues) {
                 out.print(t);
                 out.print(' ');
             }
+            out.close();
 
-            out.println();
+            file = new File(path + queryServer);
+            checkFile(file);
+            out = new PrintWriter(file);
+            printHeader(out);
             out.println("query on server: ");
-
             for (Double t : queryTimeServerValues) {
                 out.print(t);
                 out.print(' ');
             }
+            out.close();
 
-            out.println();
+            file = new File(path + clientLocal);
+            checkFile(file);
+            out = new PrintWriter(file);
+            printHeader(out);
             out.println("client local: ");
-
             for (Double t : clientTimeValues) {
                 out.print(t);
                 out.print(' ');
             }
-
-            out.println();
-
             out.close();
         } catch (IOException e) {
             System.err.println("Failed to save to file");
         }
+    }
+
+    private void checkFile(@NotNull File file) throws IOException {
+        if (!file.exists()) {
+            if (!file.createNewFile()) {
+                throw new IOException();
+            }
+        }
+    }
+
+    private void printHeader(@NotNull PrintWriter out) {
+        out.println(serverType.toString());
+        out.println("X: " + x);
+        out.println("N: " + n);
+        out.println("M: " + m);
+        out.println("d: " + d);
+
+        if (incN != 0) {
+            out.println("N changes:");
+            out.print("step: " + incN);
+        } else if (incM != 0) {
+            out.println("M changes:");
+            out.print("step: " + incM);
+        } else {
+            out.println("delta changes:");
+            out.print("step: " + incD);
+        }
+
+        out.println(" from: " + from + " to: " + to);
+
+        for (int cur = from; cur <= to; cur += step) {
+            out.print(cur);
+            out.print(' ');
+        }
+
+        out.println();
     }
 }

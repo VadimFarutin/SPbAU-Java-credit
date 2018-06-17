@@ -1,0 +1,10 @@
+ONE_CLIENT_PER_THREAD
+X: 5
+N: 10000
+M: 5
+d: 10
+delta changes:
+step: 150 from: 10 to: 1350
+10 160 310 460 610 760 910 1060 1210 
+client on server: 
+385.0 418.0 385.0 409.0 424.0 409.0 410.0 411.0 434.0 
